@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="graficoNumeroAtencionesSegunSexo" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77083347-04cf-4287-9e20-58b46c0685ea">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="14"/>
+	<parameter name="seleccion" class="java.lang.String">
+		<defaultValueExpression><![CDATA["SELECT  count(a.idAtencion) as contador, (case pac.sexoPac  when 'M' then 'Masculino' when 'F' then 'Femenino' end) as sexoPac FROM atencion a, paciente pac, empleado e, especialidad esp, persona p WHERE a.idPaciente= pac.idPaciente and a.idEmpleado = e.idEmpleado and e.idEspecialidad = esp.idEspecialidad and e.idPersona = p.idPersona group by pac.sexoPac"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="subtitulo" class="java.lang.String">
+		<defaultValueExpression><![CDATA["subtitulo"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[$P!{seleccion}]]>
+	</queryString>
+	<field name="contador" class="java.lang.Long"/>
+	<field name="sexoPac" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="103" y="0" width="332" height="34" forecolor="#FF3333" uuid="9ac61688-3de5-4bbe-9dd9-24788f5ef615"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Grafico de número de atenciones según sexo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="59" width="555" height="20" uuid="d5f1ccf8-3a6c-4a91-8963-c10e8c21ce70"/>
+				<textFieldExpression><![CDATA[$P{subtitulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="238" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="81" y="20" width="379" height="189" uuid="a6d756ac-f942-4643-9244-0e3a2e70fdae"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{sexoPac}]]></keyExpression>
+					<valueExpression><![CDATA[$F{contador}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>

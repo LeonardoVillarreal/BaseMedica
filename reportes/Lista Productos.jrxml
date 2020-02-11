@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Lista Productos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9edbd2bc-04c8-4276-9bd3-c831140859d9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="valor" class="java.lang.String">
+		<defaultValueExpression><![CDATA["textoLocal"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select *from producto p, tipoProducto tp where p.idtipoProducto=tp.idtipoProducto]]>
+	</queryString>
+	<field name="idproducto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoPro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="costoPromedioPro" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcionPro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precioUnitPro" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saldoPro" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="comprometidoPro" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idtipoProducto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcionTipPro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="157" y="0" width="211" height="34" uuid="c072e53e-263a-401f-ace7-9e253c0c9bd3"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Mi primer reporte]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="35" uuid="bfb3fd18-6213-4cfc-96d9-f30c850db111"/>
+				<textFieldExpression><![CDATA[$P{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="40ebcaf7-b0a2-4794-8836-d4d36788e4eb"/>
+				<text><![CDATA[codigoPro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="119" y="0" width="100" height="20" uuid="f659ef4f-460e-4e82-9404-d0c97e7d80f6"/>
+				<text><![CDATA[descripcionPro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="0" width="48" height="20" uuid="e5c950a7-752d-4be4-9c04-8da8fbbb5ed6"/>
+				<text><![CDATA[precioUnitPro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="0" width="61" height="20" uuid="bf85cc1e-1ae4-4b75-8d8c-d38deeb62012"/>
+				<text><![CDATA[saldoPro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="0" width="100" height="20" uuid="86f36d45-df11-4639-9403-4f477696436f"/>
+				<text><![CDATA[descripcionTipPro]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="b7f58944-c070-4fcb-ba63-c62295fa0018"/>
+				<textFieldExpression><![CDATA[$F{codigoPro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="0" width="100" height="20" uuid="c24efab0-99c7-47f0-889a-b6f795dd5455"/>
+				<textFieldExpression><![CDATA[$F{descripcionPro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="236" y="0" width="48" height="20" uuid="a7376093-c9f2-424e-8c6e-8d944e091ce3"/>
+				<textFieldExpression><![CDATA[$F{precioUnitPro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="0" width="61" height="20" uuid="f7c5b996-dc27-45f2-acda-b4e27f2cfecd"/>
+				<textFieldExpression><![CDATA[$F{saldoPro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="0" width="100" height="20" uuid="df97efc9-b40f-44bb-912e-ee28c093cd4d"/>
+				<textFieldExpression><![CDATA[$F{descripcionTipPro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
